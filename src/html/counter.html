@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="../vue/vue.js"></script>
+    <script src="../vue/vuex.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>{{ count }}</p>
+    <p>
+        <button @click="increment">+</button>
+        <button @click="decrement">-</button>
+    </p>
+</div>
+<script>
+    const store = new Vuex.Store({
+        state: {
+            count: 0
+        },
+        mutations: {
+            increment: function(state){
+                state.count++;
+            },
+            decrement: function(state){
+                state.count--;
+            }
+        }
+    });
+
+    new Vue({
+        el: '#app',
+        computed: {
+            count: function () {
+                /* 每当 store.state.count 变化的时候,
+                    都会重新求取计算属性，并且触发更新相关联的DOM */
+                return store.state.count;
+            }
+        },
+        methods: {
+            increment: function() {
+                /*
+                * 通过提交 mutation 的方式，而非直接改变 store.state.count，
+                * 是因为我们想要更明确地追踪到状态的变化。这个简单的约定能够让你的意图更加明显，
+                * 这样你在阅读代码的时候能更容易地解读应用内部的状态改变。
+                * */
+                store.commit('increment');
+            },
+            decrement: function() {
+                store.commit('decrement');
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
