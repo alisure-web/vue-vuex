@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="../../vue/vue.js"></script>
+    <script src="../../vue/vuex.js"></script>
+    <script src="State-compiled.js"></script>
+</head>
+<body>
+
+<div id="counter">
+    <p>{{ count }}</p>
+    <p>
+        <button @click="increment">+</button>
+        <button @click="decrement">-</button>
+    </p>
+</div>
+<script>
+    new Vue({
+        el: '#counter',
+        store,
+        computed: {
+            count: function () {
+                return store.state.count;
+            }
+        },
+        methods: {
+            increment: function() {
+                store.commit('increment');
+            },
+            decrement: function() {
+                store.commit('decrement');
+            }
+        }
+    });
+</script>
+
+<div id="counter0">
+    <Counter0></Counter0>
+    <p>
+        <button @click="increment">+</button>
+        <button @click="decrement">-</button>
+    </p>
+</div>
+<script>
+    const Counter0 = {
+        template: "<p>{{ count }}</p>",
+        computed: {
+            count: function () {
+                return store.state.count;
+            }
+        }
+    };
+
+    new Vue({
+        el: '#counter0',
+        store,
+        components: {
+            Counter0
+        },
+        methods: {
+            increment: function() {
+                store.commit('increment');
+            },
+            decrement: function() {
+                store.commit('decrement');
+            }
+        }
+    });
+</script>
+
+<div id="counter2">
+    <Counter2></Counter2>
+    <p>
+        <button @click="increment">+</button>
+        <button @click="decrement">-</button>
+    </p>
+</div>
+<script>
+    const Counter2 = {
+        template: "<p>{{ count }}</p>",
+        computed: Vuex.mapState({
+            count: function (state) {
+                return state.count;
+            },
+            countAlias: "count"
+        })
+    };
+
+    new Vue({
+        el: '#counter2',
+        store,
+        components: {
+            Counter2
+        },
+        methods: {
+            increment: function() {
+                store.commit('increment');
+            },
+            decrement: function() {
+                store.commit('decrement');
+            }
+        }
+    });
+</script>
+
+<div id="counter3">
+    <Counter3></Counter3>
+    <p>
+        <button @click="increment">+</button>
+        <button @click="decrement">-</button>
+    </p>
+</div>
+<script>
+    const Counter3 = {
+        template: "<p>{{ count }}</p>",
+        computed: Vuex.mapState([
+            "count"
+        ])
+    };
+
+    new Vue({
+        el: '#counter3',
+        store,
+        components: {
+            Counter3
+        },
+        methods: {
+            increment: function() {
+                store.commit('increment');
+            },
+            decrement: function() {
+                store.commit('decrement');
+            }
+        }
+    });
+</script>
+
+
+</body>
+</html>

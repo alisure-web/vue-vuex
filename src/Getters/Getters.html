@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Getters</title>
+
+    <script src="../../vue/vue.js"></script>
+    <script src="../../vue/vuex.js"></script>
+    <script src="Getters-html-compiled.js"></script>
+</head>
+<body>
+
+<div id="number">
+    <Number></Number>
+</div>
+<script>
+    const Number = {
+        template: "<p>{{ number }}</p>",
+        computed: {
+            number: function () {
+                return store.getters.greaterThanCounter;
+            }
+        }
+    };
+
+    new Vue({
+        el: '#number',
+        store,
+        components: {
+            Number
+        }
+    });
+</script>
+
+<div id="number1">
+    <Number1></Number1>
+</div>
+<script>
+    const Number1 = {
+        template: "<p>{{ number }}</p>",
+        computed: Vuex.mapGetters({
+            number: "greaterThanCounter"
+        })
+    };
+
+    new Vue({
+        el: '#number1',
+        store,
+        components: {
+            Number1
+        }
+    });
+</script>
+
+</body>
+</html>

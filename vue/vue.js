@@ -559,7 +559,7 @@ if (inBrowser) {
         supportsPassive = true;
       }
     } )); // https://github.com/facebook/flow/issues/285
-    window.addEventListener('test-passive', null, opts);
+    window.addEventListener('first-passive', null, opts);
   } catch (e) {}
 }
 
@@ -5869,12 +5869,12 @@ function genAssignmentCode (
  *
  * for loop possible cases:
  *
- * - test
- * - test[idx]
- * - test[test1[idx]]
- * - test["a"][idx]
- * - xxx.test[a[a].test1[idx]]
- * - test.xxx.a["asa"][test1[idx]]
+ * - first
+ * - first[idx]
+ * - first[test1[idx]]
+ * - first["a"][idx]
+ * - xxx.first[a[a].test1[idx]]
+ * - first.xxx.a["asa"][test1[idx]]
  *
  */
 

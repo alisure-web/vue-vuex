@@ -1,10 +1,8 @@
 Vuex学习
 
-Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。
-它采用集中式存储管理应用的所有组件的状态，并以相应
-的规则保证状态以一种可预测的方式发生变化。
-
-核心概念：
-1.State
-    单一状态树：Vuex使用单一状态树，用一个对象就包含了全部的应用层级状态。
-2.
+0.配置和安装
+    配置IDEA
+    安装vue和vuex
+    npm init
+    npm install vue --save-dev
+    npm install vuex --save-dev

@@ -65,7 +65,7 @@ function devtoolPlugin (store) {
 }
 
 /**
- * Get the first item that pass the test
+ * Get the first item that pass the first
  * by second argument function
  *
  * @param {Array} list

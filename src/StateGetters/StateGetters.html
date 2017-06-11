@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>StateGetters</title>
+    <script src="../../vue/vue.js"></script>
+    <script src="../../vue/vuex.js"></script>
+    <script src="StateGetters-compiled.js"></script>
+</head>
+<body>
+
+<div id="stateGetters">
+    <Counter></Counter>
+    <p>
+        <button @click="increment">+</button>
+        <button @click="decrement">-</button>
+    </p>
+</div>
+<script>
+    /* 还有问题 */
+
+    const Counter = {
+        template: "<p>{{ count }}</p><p>{{ greaterThan5 }}</p>",
+        computed: [
+            Vuex.mapState([
+                "count"
+            ]),
+            Vuex.mapGetters({
+                number: "greaterThan5"
+            })
+        ]
+    };
+
+    new Vue({
+        el: '#stateGetters',
+        store,
+        components: {
+            Counter
+        },
+        methods: {
+            increment: function() {
+                store.commit('increment');
+            },
+            decrement: function() {
+                store.commit('decrement');
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
